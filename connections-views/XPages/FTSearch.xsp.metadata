@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="3.0" replicaid="00257A77006460AB" version="8.5" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="1b2" sequence="161" unid="02E2F9AD650D160A00257A77007DD2CC">
+<created><datetime>20120912T225419,64+00</datetime></created>
+<modified><datetime>20120913T180404,10+00</datetime></modified>
+<revised><datetime>20120913T180404,09+00</datetime></revised>
+<lastaccessed><datetime>20120913T180404,10+00</datetime></lastaccessed>
+<addedtofile><datetime>20120912T225419,69+00</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
+<wassignedby><name>CN=Jesse Gallagher/O=Frost</name></wassignedby>
+<item name="$Flags"><text>gC~4K</text></item>
+<item name="$TITLE"><text>FTSearch.xsp</text></item>
+
+<item name="$DesignerVersion"><text>8.5.1</text></item>
+
+
+
+
+<item name="$FileNames" sign="true"><text>FTSearch.xsp</text></item>
+
+</note>

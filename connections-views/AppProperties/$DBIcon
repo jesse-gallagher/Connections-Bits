@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE note SYSTEM 'xmlschemas/domino_8_5_3.dtd'>
+<note class='form' xmlns='http://www.lotus.com/dxl' version='8.5' maintenanceversion='3.0'
+ replicaid='00257A77006460AB'>
+<noteinfo noteid='186' unid='8B163DA4027101C500257A77006664D5' sequence='1'>
+<created><datetime>20120912T183824,85+00</datetime></created>
+<modified><datetime>20120912T183825,61+00</datetime></modified>
+<revised><datetime>20120912T183825,60+00</datetime></revised>
+<lastaccessed><datetime>20120912T183825,61+00</datetime></lastaccessed>
+<addedtofile><datetime>20120912T183825,61+00</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
+<wassignedby><name>CN=Jesse Gallagher/O=Frost</name></wassignedby>
+<item name='$TITLE'><text>$DBIcon</text></item>
+<item name='$Flags'><text>34Ci~Q</text></item>
+<item name='$ImagesWide' sign='true'><number>1</number></item>
+<item name='$ImagesHigh' sign='true'><number>1</number></item>
+<item name='$ImagesColorize' sign='true'><number>0</number></item>
+<item name='$FileSize' sign='true'><number>1518</number></item>
+<item name='$ImageData' sign='true'>
+<rawitemdata type='1'>
+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
+</rawitemdata></item>
+<item name='$FileModDT' sign='true'><datetime dst='true'>20060613T073926,00-04</datetime></item>
+<item name='$ImageNames' sign='true'><text>Y:\Pictures\tango-icon-theme-0.8.90\32x32\mimetypes\x-office-spreadsheet.png</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item></note>
+

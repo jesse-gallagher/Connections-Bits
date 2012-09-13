@@ -1,0 +1,16 @@
+<iw:widget xmlns:iw="http://www.ibm.com/xmlns/prod/iWidget" name="NotesView" id="NotesView"
+	iScope="xspScopeClass" allowInstanceContent="true"
+	supportedModes="view fullpage" mode="view">
+	
+	<iw:resource uri="/domjs/dojo-1.4.3/ibm/xsp/widget/layout/xspScopeClass.js"/>
+	
+	<iw:content mode="view"><![CDATA[
+		<iframe id="_IWID_xspFrame_view" name="_IWID_xspFrame_view"
+			frameborder="0" marginheight="0" marginwidth="0"
+			width="100%" height="3000" scrolling="no"></iframe>
+	]]></iw:content>
+	<iw:content mode="fullpage"><![CDATA[
+		
+	]]></iw:content>
+	
+</iw:widget>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="3.0" replicaid="00257A77006460AB" version="8.5" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="19e" sequence="137" unid="9541C3B975E003E100257A77006733A2">
+<created><datetime>20120912T184714,26+00</datetime></created>
+<modified><datetime>20120913T012210,48+00</datetime></modified>
+<revised><datetime>20120913T012210,47+00</datetime></revised>
+<lastaccessed><datetime>20120913T012210,48+00</datetime></lastaccessed>
+<addedtofile><datetime>20120912T184714,32+00</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
+<wassignedby><name>CN=Jesse Gallagher/O=Frost</name></wassignedby>
+<item name="$Flags"><text>34567Cg~[</text></item>
+<item name="$TITLE"><text>frostillicus/DynamicViewCustomizer.java</text></item>
+
+<item name="$DesignerVersion"><text>8.5.3</text></item>
+
+
+
+<item name="$FileNames" sign="true"><text>frostillicus/DynamicViewCustomizer.java</text></item>
+
+
+
+
+
+
+
+
+
+</note>

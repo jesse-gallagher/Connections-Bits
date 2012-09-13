@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xe:dynamicViewPanel id="viewPanel" customizerBean="frostillicus.DynamicViewCustomizer" rows="${javascript:parseInt(param.rows, 10)}" showColumnHeader="true">
+		<xe:this.data>
+			<xp:dominoView var="view1" viewName="${param.viewName}" />
+		</xe:this.data>
+		<xp:this.facets>
+			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager1" pageCount="4"
+				rendered="#{javascript:getComponent('viewPanel').data.view.getEntryCount() &gt; getComponent('viewPanel').rows}" />
+			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="footerPager" id="pager2" pageCount="4"
+				rendered="#{javascript:getComponent('viewPanel').data.view.getEntryCount() &gt; getComponent('viewPanel').rows}"/>
+		</xp:this.facets>
+		<xp:this.viewStyleClass><![CDATA[#{javascript:
+			var classes = ["notesView"]
+			if(getComponent('viewPanel').data.view.getEntryCount() <= getComponent('viewPanel').rows) {
+				classes.push("hideHeader")
+				classes.push("hideFooter")
+			} else {
+				if(param.containsKey("hideHeader")) classes.push("hideHeader")
+				if(param.containsKey("hideFooter")) classes.push("hideFooter")
+			}
+			classes.join(" ")
+		}]]></xp:this.viewStyleClass>
+	</xe:dynamicViewPanel>
+</xp:view>

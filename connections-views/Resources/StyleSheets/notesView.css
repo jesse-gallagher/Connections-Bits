@@ -1,0 +1,77 @@
+.viewTable td, .viewTable tr {
+	max-height: 100px;
+	overflow: hidden;
+}
+
+/* Make Notes views full width and let the last column extend to the end */
+.notesView .xspDataTableViewPanel { width: 100% }
+/*.notesView .xspDataTableViewPanel td:last-child, .notesView .xspDataTableViewPanel th:last-child { width: 100% }*/
+.notesView .xspDataTable { margin-left: 0 !important }
+.notesView td.notesViewColumn:first-child { padding-left: 5px !important }
+
+.notesView span.xspPanelViewColumnHeader, .notesView th {
+	/*font-weight: bold !important;*/
+	color: #F16D0E;
+	/*white-space: nowrap;*/
+}
+.notesView .xspDataTable tbody tr:nth-child(even) { background-color: rgba(0, 0, 0, 0.035) }
+/*.notesView div.xspPanelViewColumnHeader { display: inline }*/
+
+/* Category titles */
+.notesView td[colspan] a {
+	color: black;
+}
+
+table.hideHeader > tbody > tr:first-child { display: none }
+table.hideFooter > tbody > tr:last-child { display: none }
+
+.notesView td.xspColumnViewMiddle div.xspColumnViewMiddle,
+.notesView td.xspColumnViewStart div.xspColumnViewStart,
+.notesView td.xspColumnViewEnd div.xspColumnViewEnd { padding: 0 }
+
+.notesView td {
+	overflow: hidden;
+	line-height: 1.6;
+}
+.notesView td.notesViewCategory a, .notesView td.notesViewCategory button { padding-top: 0; padding-bottom: 0 }
+
+.notesViewColumn {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+/*.notesView .headerRow, .notesView .footerRow { display: none }*/
+
+/*.lotusView th, .lotusView td {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	height: 50px;
+}*/
+
+/* Hide the white box gif */
+img.xspImageViewColumn[src='/icons/vwicn999.gif'] {
+	opacity: 0;
+}
+
+/* Make it so that the text in a category cell doesn't wrap below the twistie */
+.notesViewCategory button { float: left; margin-top: 0 }
+.notesViewCategory a { display: block; margin-left: 20px; padding-top: 4px; padding-bottom: 4px }
+
+.viewSearch { margin-bottom: 0.5em }
+
+/* Add in some notesView* styles */
+.notesViewAlignLeft { text-align: left }
+.notesViewAlignRight { text-align: right }
+.notesViewAlignCenter { text-align: center }
+.notesViewPlain {
+	text-decoration: none;
+	font-weight: bold;
+	font-style: normal;
+}
+.notesViewUnderline, .notesViewUnderline .xspPanelViewColumnHeader { text-decoration: underline }
+.notesViewBold, .notesViewBold .xspPanelViewColumnHeader { font-weight: bold !important }
+.notesViewItalic { font-style: italic }
+.notesViewStrikethrough { text-decoration: line-through }
+
+.addIconMargin img { margin-right: 5px }
