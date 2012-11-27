@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<!--
+		Parameters:
+		
+		- search: FT search query
+		- column: one or more field names (or "title|field") pairs to include as columns, e.g. "column=FirstName&column=Email|EmailAddress"
+		- sortColumn: the field name from the column list to sort by
+		- sortOrder: ascending or descending order for the sort column
+		- rows: the number of rows to show at a time
+	-->
+
 	<xp:this.dataContexts>
 		<xp:dataContext var="columns"><xp:this.value><![CDATA[${javascript:
 			var paramCols = facesContext.getExternalContext().getRequest().getParameterMap().get("column")
@@ -19,92 +29,32 @@
 		}]]></xp:this.value></xp:dataContext>
 	</xp:this.dataContexts>
 	<xp:this.afterPageLoad><![CDATA[#{javascript:
-		var ftView = getComponent("ftView")
+		var ftView = getComponent("viewPanel")
 		frostillicus.FTSearchHelper.addColumns(ftView, columns)
 		if(param.containsKey("sortColumn")) {
-			getComponent("ftView").setSortColumn(param.sortColumn)
+			var order = param.containsKey("sortOrder") ? param.sortOrder : "ascending"
+			getComponent("viewPanel").getValue().setResortOrder(param.sortColumn, order)
 		}
 	}]]></xp:this.afterPageLoad>
 	
-	<xp:viewPanel id="ftView" value="#{viewData}"
-		viewStyleClass="notesView" rows="${javascript:parseInt(param.rows, 10)}">
+	<xp:viewPanel id="viewPanel" value="#{viewData}"
+		rows="${javascript:parseInt(param.rows, 10)}">
 		<xp:this.facets>
-			<xp:pager partialRefresh="true" partialExecute="true" layout="Previous Group Next" xp:key="headerPager" id="pager2"/>
-			<xp:pager partialRefresh="true" partialExecute="true" layout="Previous Group Next" xp:key="footerPager" id="pager3"/>
+			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager1" pageCount="4"
+				rendered="#{javascript:getComponent('viewPanel').value.getRowCount() &gt; getComponent('viewPanel').rows}" />
+			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="footerPager" id="pager4" pageCount="4"
+				rendered="#{javascript:getComponent('viewPanel').value.getRowCount() &gt; getComponent('viewPanel').rows}"/>
 		</xp:this.facets>
+		<xp:this.viewStyleClass><![CDATA[#{javascript:
+			var classes = ["notesView"]
+			if(getComponent('viewPanel').value.getRowCount() <= getComponent('viewPanel').rows) {
+				classes.push("hideHeader")
+				classes.push("hideFooter")
+			} else {
+				if(param.containsKey("hideHeader")) classes.push("hideHeader")
+				if(param.containsKey("hideFooter")) classes.push("hideFooter")
+			}
+			classes.join(" ")
+		}]]></xp:this.viewStyleClass>
 	</xp:viewPanel>
-	
-<!--	<xp:repeat id="repeater" var="viewEntry" styleClass="notesView" rows="${javascript:parseInt(param.rows, 10)}">-->
-<!--		<xe:this.value><![CDATA[${javascript:-->
-<!--			/*var result = new frostillicus.SortableMapView()-->
-<!--			var map = new java.util.HashMap()-->
-<!--			map.put("foo", "bar")-->
-<!--			result.add(map)-->
-<!--			return result*/-->
-<!--			new frostillicus.SortableMapView(database.FTSearch(param.query), columns)-->
-<!--		}]]></xe:this.value>-->
-<!--		<xp:this.facets>-->
-<!--			<xp:panel xp:key="header" disableTheme="true">-->
-<!--				<xp:pager for="repeater" partialRefresh="true" partialExecute="true" layout="Previous Group Next" pageCount="4" id="headerPager"/>-->
-<!--				<xp:text escape="false" disableTheme="true" value="&lt;table class='xspDataTable'&gt;"/>-->
-<!--				<thead>-->
-<!--					<tr>-->
-<!--						<xp:repeat disableTheme="true" value="${columns}" var="columnName">-->
-<!--							<xp:text styleClass="" tagName="th" value="#{columnName}"/>-->
-<!--						</xp:repeat>-->
-<!--					</tr>-->
-<!--				</thead>-->
-<!--			</xp:panel>-->
-<!--			<xp:panel xp:key="footer" disableTheme="true">-->
-<!--				<xp:text disableTheme="true" escape="false" value="&lt;/table&gt;"/>-->
-<!--				<xp:pager for="repeater" partialRefresh="true" partialExecute="true" layout="Previous Group Next" pageCount="4" id="footerPager"/>-->
-<!--			</xp:panel>-->
-<!--		</xp:this.facets>-->
-<!--		-->
-<!--		<tr>-->
-<!--			<xp:repeat value="${columns}" var="columnName" rows="10000">-->
-<!--				<xp:text tagName="td" value="#{viewEntry[columnName]}"/>-->
-<!--			</xp:repeat>-->
-<!--		</tr>-->
-<!--	</xp:repeat>-->
-	
-<!--	<p style="clear: both"/>-->
-<!--	-->
-<!--	<xp:dataTable rows="30" id="viewPanel2" var="viewEntry">-->
-<!--		<xp:this.facets>-->
-<!--			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager2"></xp:pager>-->
-<!--		</xp:this.facets>-->
-<!--		<xp:this.data>-->
-<!--			<xp:dominoView var="view1" viewName="${'Characters'}"></xp:dominoView>-->
-<!--		</xp:this.data>-->
-<!--		<xp:column id="viewColumn3">-->
-<!--			<xp:this.facets><xp:text xp:key="header" value="RealmName"/></xp:this.facets>-->
-<!--			<xp:text value="#{viewEntry.RealmName}"/>-->
-<!--		</xp:column>-->
-<!--		<xp:column id="column1">-->
-<!--			<xp:this.facets><xp:text xp:key="header" value="Name"/></xp:this.facets>-->
-<!--			<xp:text value="#{viewEntry.Name}"/>-->
-<!--		</xp:column>-->
-<!--	</xp:dataTable>-->
-<!--	-->
-<!--	<p style="clear: both"/>-->
-<!--	-->
-<!--	<xp:viewPanel rows="30" id="viewPanel1">-->
-<!--		<xp:this.facets>-->
-<!--			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager1"></xp:pager>-->
-<!--		</xp:this.facets>-->
-<!--		<xp:this.data>-->
-<!--			<xp:dominoView var="view1" viewName="${'Characters'}"></xp:dominoView>-->
-<!--		</xp:this.data>-->
-<!--		<xp:viewColumn columnName="RealmName" id="viewColumn1">-->
-<!--			<xp:viewColumnHeader value="RealmName" id="viewColumnHeader1"></xp:viewColumnHeader>-->
-<!--		</xp:viewColumn>-->
-<!--		<xp:viewColumn columnName="Name" id="viewColumn2">-->
-<!--			<xp:viewColumnHeader value="Name" id="viewColumnHeader2"></xp:viewColumnHeader>-->
-<!--		</xp:viewColumn>-->
-<!--	</xp:viewPanel>-->
-<!--	-->
-<!--	<xp:text value="#{javascript:getComponent('viewPanel1')}"/>-->
-	
-<!--	<xp:text value="${columns}"/>-->
 </xp:view>

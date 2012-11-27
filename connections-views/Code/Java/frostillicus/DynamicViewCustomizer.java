@@ -4,6 +4,29 @@
 
 package frostillicus;
 
+/*
+ * © Copyright Jesse Gallagher, 2012
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); 
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at:
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software 
+ * distributed under the License is distributed on an "AS IS" BASIS, 
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or 
+ * implied. See the License for the specific language governing 
+ * permissions and limitations under the License.
+ * 
+ * Author: Jesse Gallagher
+ */
+
+/*
+ * The latest version is available from https://github.com/jesse-gallagher/Domino-One-Offs/blob/master/mcl/reports/DynamicViewCustomizer.java
+ */
+
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Date;
@@ -44,7 +67,7 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 		return new DynamicViewFactory();
 	}
 
-	public class DynamicViewFactory implements ViewFactory, Serializable {
+	public static class DynamicViewFactory implements ViewFactory, Serializable {
 		private static final long serialVersionUID = 123034173761337005L;
 		private SystemCache views = new SystemCache("View Definition", 16, "xsp.extlib.viewdefsize");
 
@@ -251,7 +274,7 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 			return columns;
 		}
 
-		public class ExtendedColumnDef extends DefaultColumnDef implements Serializable {
+		public static class ExtendedColumnDef extends DefaultColumnDef implements Serializable {
 			private static final long serialVersionUID = 5158008403553374867L;
 
 			public String colorColumn;
@@ -278,7 +301,6 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 		return super.createColumn(context, panel, index, colDef);
 	}
 
-	//@Override
 	@Override
 	public void afterCreateColumn(FacesContext context, int index, ColumnDef colDef, IControl column) {
 		UIDynamicViewPanel panel = (UIDynamicViewPanel)ExtLibUtil.getComponentFor(context.getViewRoot(), panelId);
@@ -369,7 +391,7 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 		col.setHeaderClass((col.getHeaderClass() == null ? "" : col.getHeaderClass()) + headerStyleClass);
 	}
 
-	public class ExtendedViewColumnConverter extends ViewColumnConverter {
+	public static class ExtendedViewColumnConverter extends ViewColumnConverter {
 		private ColumnDef colDef;
 		private String panelId;
 
@@ -421,10 +443,6 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 			return stringValue;
 		}
 
-		// @Override public String getAsString(FacesContext context, UIComponent
-		// component, Object value) { return this.getValueAsString(context,
-		// component, value); }
-
 		private String handlePassThroughHTML(String cellData) {
 			if(cellData.contains("[<") && cellData.contains(">]")) {
 				String[] cellChunks = cellData.split("\\[\\<", -2);
@@ -450,23 +468,23 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 		@Override
 		public Object saveState(FacesContext context) {
 			Object[] superState = (Object[])super.saveState(context);
-			Object[] state = new Object[4];
-			state[0] = superState[0];
-			state[1] = superState[1];
-			state[2] = superState[2];
-			state[3] = this.colDef;
+			Object[] state = new Object[3];
+			state[0] = superState;
+			state[1] = this.colDef;
+			state[2] = this.panelId;
 			return state;
 		}
 
 		@Override
 		public void restoreState(FacesContext context, Object value) {
-			super.restoreState(context, value);
 			Object[] state = (Object[])value;
-			this.colDef = (ColumnDef)state[3];
+			super.restoreState(context, state[0]);
+			this.colDef = (ColumnDef)state[1];
+			this.panelId = (String)state[2];
 		}
 	}
 
-	public class IconColumnConverter extends ViewColumnConverter {
+	public static class IconColumnConverter extends ViewColumnConverter {
 		private ColumnDef colDef;
 
 		// For loading the state
@@ -491,10 +509,12 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 
 			result.append("<span style='white-space: nowrap'>");
 			for(Object node : listValue) {
-				if(node instanceof Double) {
+				// Handle a zero-value icon specially
+				if(node instanceof Double && ((Double)node == 0 || (Double)node == 999)) {
+					result.append("<img class='notesViewIconCustom notesViewIconBlank' src='/icons/ecblank.gif' />");
+				} else if(node instanceof Double) {
 					result.append("<img class='notesViewIconStandard' src='/icons/vwicn");
 					Double num = (Double)node;
-					// /icons/vwicn999.gif
 					if(num < 10) {
 						result.append("00");
 					} else if(num < 100) {
@@ -521,19 +541,17 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 		@Override
 		public Object saveState(FacesContext context) {
 			Object[] superState = (Object[])super.saveState(context);
-			Object[] state = new Object[4];
-			state[0] = superState[0];
-			state[1] = superState[1];
-			state[2] = superState[2];
-			state[3] = this.colDef;
+			Object[] state = new Object[2];
+			state[0] = superState;
+			state[1] = this.colDef;
 			return state;
 		}
 
 		@Override
 		public void restoreState(FacesContext context, Object value) {
-			super.restoreState(context, value);
 			Object[] state = (Object[])value;
-			this.colDef = (ColumnDef)state[3];
+			super.restoreState(context, state[0]);
+			this.colDef = (ColumnDef)state[1];
 		}
 
 	}
@@ -644,7 +662,6 @@ public class DynamicViewCustomizer extends DominoViewCustomizer implements Seria
 
 	public static String specialTextDecode(String specialText, ViewEntry viewEntry) throws NotesException {
 		String result = specialText;
-		//if(true) return result;
 
 		String specialStart = "";
 		String specialEnd = "�";

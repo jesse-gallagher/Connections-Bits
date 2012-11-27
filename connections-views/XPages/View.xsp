@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<!--
+		Parameters:
+		
+		- databaseName: the database name (or "server!!database") of the view (optional)
+		- viewName: the name of the view in the database
+		- rows: the number of rows to show at a time
+	-->
+
 	<xe:dynamicViewPanel id="viewPanel" customizerBean="frostillicus.DynamicViewCustomizer" rows="${javascript:parseInt(param.rows, 10)}" showColumnHeader="true">
 		<xe:this.data>
-			<xp:dominoView var="view1" viewName="${param.viewName}" />
+			<xp:dominoView var="view1" viewName="${param.viewName}" databaseName="${param.databaseName}" />
 		</xe:this.data>
 		<xp:this.facets>
 			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager1" pageCount="4"

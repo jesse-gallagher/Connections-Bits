@@ -40,5 +40,6 @@ public class FTSearchHelper {
 			viewControl.addChild(cCol);
 		}
 		ControlBuilder.buildControl(FacesContext.getCurrentInstance(), viewControl,true);
+
 	}
 }
