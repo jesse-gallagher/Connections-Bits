@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<!--
+		Parameters:
+		
+		- databaseName: the database name (or "server!!database") to search (optional)
+		- selection: the selection formula for the view
+		- column: one or more column definitions to include as columns. The format is "title|fieldname|defaultsort|optionalsort" or just "fieldname"
+		- target: the target="" value for links
+	-->
+
+	<xc:DynaView
+		columns="${facesContext.externalContext.request.parameterMap['column']}"
+		databaseName="${param.databaseName}"
+		selection="${param.selection}"
+		target="${param.target}"
+	/>
+</xp:view>

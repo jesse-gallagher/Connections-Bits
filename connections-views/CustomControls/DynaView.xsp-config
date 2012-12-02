@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  <faces-config-extension>
+    <namespace-uri>http://www.ibm.com/xsp/custom</namespace-uri>
+    <default-prefix>xc</default-prefix>
+  </faces-config-extension>
+  <composite-component>
+    <component-type>DynaView</component-type>
+    <composite-name>DynaView</composite-name>
+    <composite-file>/DynaView.xsp</composite-file>
+    <composite-extension>
+      <designer-extension>
+        <in-palette>true</in-palette>
+      </designer-extension>
+    </composite-extension>
+    <property>
+      <property-name>columns</property-name>
+      <property-class>object</property-class>
+      <description>One or more column definitions to include as columns. The format is "title|fieldname|defaultsort|optionalsort" or just "fieldname". Examples:&#xd;
+&#xd;
+- FirstName&#xd;
+- First Name|FirstName&#xd;
+- Address|Address|descending&#xd;
+- Last Name|LastName|ascending|both</description>
+      <property-extension>
+        <required>true</required>
+      </property-extension>
+    </property>
+    <property>
+      <property-name>databaseName</property-name>
+      <property-class>string</property-class>
+      <property-extension>
+        <required>false</required>
+      </property-extension>
+      <description>The database name (or "server!!database") to search</description>
+    </property>
+    <property>
+      <property-name>selection</property-name>
+      <property-class>string</property-class>
+      <property-extension>
+        <required>true</required>
+      </property-extension>
+      <description>The selection formula for the view</description>
+    </property>
+    <property>
+      <property-name>target</property-name>
+      <property-class>string</property-class>
+      <description>The target="" value for links</description>
+    </property>
+  </composite-component>
+</faces-config>

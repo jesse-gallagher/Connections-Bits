@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:xc="http://www.ibm.com/xsp/custom">
-	<!--
-		Parameters:
-		
-		- databaseName: the database name (or "server!!database") of the view (optional)
-		- search: FT search query
-		- column: one or more field names (or "title|field") pairs to include as columns, e.g. "column=FirstName&column=Email|EmailAddress"
-		- sortColumn: the field name from the column list to sort by
-		- sortOrder: ascending or descending order for the sort column
-		- rows: the number of rows to show at a time
-		- links: enables showing each column as links (the presence of the parameter triggers it, regardless of value)
-		- target: the target="" value for links
-		- readOnly: indicates that the links should open in read mode
-	-->
-
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
 	<xp:this.dataContexts>
 		<xp:dataContext var="columns"><xp:this.value><![CDATA[${javascript:
-			var paramCols = facesContext.getExternalContext().getRequest().getParameterMap().get("column")
+			var paramCols = compositeData.columns
 			var result = new java.util.ArrayList(paramCols.length)
 			for(var i = 0; i < paramCols.length; i++) {
 				result.add(paramCols[i])
@@ -24,24 +10,53 @@
 			result
 		}]]></xp:this.value></xp:dataContext>
 		<xp:dataContext var="viewData"><xp:this.value><![CDATA[${javascript:
-			var paramCols = facesContext.getExternalContext().getRequest().getParameterMap().get("column")
+			var paramCols = compositeData.columns
 			var result = new java.util.ArrayList(paramCols.length)
 			for(var i = 0; i < paramCols.length; i++) {
 				result.add(paramCols[i])
 			}
-			new frostillicus.SortableMapView(database.FTSearch(param.search), result)
+			
+			var searchDB = null
+			var databaseName = compositeData.databaseName
+			if(databaseName != null && databaseName != "") {
+				var server = ""
+				var filePath = ""
+				if(databaseName.contains("!!")) {
+					server = @Left(databaseName, "!!")
+					filePath = @Right(databaseName, "!!")
+				} else {
+					server = database.getServer()
+					filePath = databaseName
+				}
+				searchDB = session.getDatabase(server, filePath)
+			} else {
+				searchDB = database
+			}
+			
+			new frostillicus.SortableMapView(searchDB.FTSearch(compositeData.search), result)
 		}]]></xp:this.value></xp:dataContext>
 	</xp:this.dataContexts>
 	<xp:this.afterPageLoad><![CDATA[#{javascript:
 		var ftView = getComponent("viewPanel")
-		frostillicus.FTSearchHelper.addColumns(ftView, columns, param.containsKey("links"), param.databaseName, param.containsKey("readOnly"))
-		if(param.containsKey("sortColumn")) {
-			var order = param.containsKey("sortOrder") ? param.sortOrder : "ascending"
-			getComponent("viewPanel").getValue().setResortOrder(param.sortColumn, order)
+		// These trinary operators are to check for null
+		frostillicus.FTSearchHelper.addColumns(ftView, columns, compositeData.showAsLinks ? true : false, compositeData.databaseName, compositeData.readOnly ? compositeData.readOnly : false)
+		if(compositeData.sortColumn) {
+			var order = compositeData.sortOrder ? compositeData.sortOrder : "ascending"
+			getComponent("viewPanel").getValue().setResortOrder(compositeData.sortColumn, order)
 		}
 	}]]></xp:this.afterPageLoad>
 	
-	<xp:viewPanel id="viewPanel" value="#{viewData}" rows="${javascript:parseInt(param.rows, 10)}" target="#{param.target}">
+	<!-- Seems like target="" doesn't work on the view panel -->
+	<xp:eventHandler event="onClientLoad" submit="false" rendered="#{compositeData.target != null}">
+		<xp:this.script><![CDATA[
+			var links = dojo.byId("#{id:viewPanel}").getElementsByTagName("a")
+			dojo.forEach(links, function(a) {
+				a.target = "#{javascript:compositeData.target}"
+			})
+		]]></xp:this.script>
+	</xp:eventHandler>
+	
+	<xp:viewPanel id="viewPanel" value="#{viewData}" rows="${javascript:parseInt(param.rows, 10)}">
 		<xp:this.facets>
 			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager1" pageCount="4"
 				rendered="#{javascript:getComponent('viewPanel').value.getRowCount() &gt; getComponent('viewPanel').rows}" />

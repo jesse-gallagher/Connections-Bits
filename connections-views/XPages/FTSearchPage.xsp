@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<!--
+		Parameters:
+		
+		- databaseName: the database name (or "server!!database") to search (optional)
+		- search: FT search query
+		- column: one or more field names (or "title|field") pairs to include as columns, e.g. "column=FirstName&column=Email|EmailAddress"
+		- sortColumn: the field name from the column list to sort by
+		- sortOrder: ascending or descending order for the sort column
+		- rows: the number of rows to show at a time
+		- showAsLinks: "true" enables showing each column as links
+		- target: the target="" value for links
+		- readOnly: "true" indicates that the links should open in read mode
+	-->
+
+	<xc:FTSearch
+		columns="${facesContext.externalContext.request.parameterMap['column']}"
+		databaseName="${param.databaseName}"
+		search="${param.search}"
+		sortColumn="${param.sortColumn}"
+		sortOrder="${param.sortOrder}"
+		rows="${param.rows}"
+		showAsLinks="${param.showAsLinks == 'true'}"
+		target="${param.target}"
+		readOnly="${param.readOnly == 'true'}"
+	/>
+</xp:view>

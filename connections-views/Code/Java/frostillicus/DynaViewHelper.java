@@ -76,7 +76,7 @@ public class DynaViewHelper {
 		private boolean sortDescending = false;
 
 		public ColumnInfo(String columnDescription) {
-			String[] columnBits = columnDescription.split("--");
+			String[] columnBits = columnDescription.split("\\|");
 
 			String title = columnBits.length < 2 ? columnBits[0] : columnBits[1];
 			String formula = columnBits[0];

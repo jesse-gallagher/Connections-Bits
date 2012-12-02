@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  <faces-config-extension>
+    <namespace-uri>http://www.ibm.com/xsp/custom</namespace-uri>
+    <default-prefix>xc</default-prefix>
+  </faces-config-extension>
+  <composite-component>
+    <component-type>FTSearch</component-type>
+    <composite-name>FTSearch</composite-name>
+    <composite-file>/FTSearch.xsp</composite-file>
+    <composite-extension>
+      <designer-extension>
+        <in-palette>true</in-palette>
+      </designer-extension>
+    </composite-extension>
+    <property>
+      <property-name>columns</property-name>
+      <property-class>object</property-class>
+      <property-extension>
+        <collection-property>false</collection-property>
+        <required>true</required>
+      </property-extension>
+      <description>One or more field names (or "title|field") pairs to include as columns, e.g. ["FirstName", "Email|EmailAddress"]</description>
+    </property>
+    <property>
+      <property-name>databaseName</property-name>
+      <property-class>string</property-class>
+      <property-extension>
+        <required>false</required>
+      </property-extension>
+      <description>The database name (or "server!!database") to search</description>
+    </property>
+    <property>
+      <property-name>search</property-name>
+      <property-class>string</property-class>
+      <property-extension>
+        <required>true</required>
+      </property-extension>
+      <description>FT search query</description>
+    </property>
+    <property>
+      <property-name>sortColumn</property-name>
+      <property-class>string</property-class>
+      <property-extension>
+        <required>false</required>
+      </property-extension>
+      <description>The field name from the column list to sort by</description>
+    </property>
+    <property>
+      <property-name>sortOrder</property-name>
+      <property-class>string</property-class>
+      <property-extension>
+        <designer-extension>
+          <editor>com.ibm.workplace.designer.property.editors.comboParameterEditor</editor>
+          <editor-parameter>ascending&#xd;
+descending</editor-parameter>
+        </designer-extension>
+        <required>false</required>
+      </property-extension>
+      <description>Ascending or descending order for the sort column</description>
+    </property>
+    <property>
+      <property-name>rows</property-name>
+      <property-class>int</property-class>
+      <property-extension>
+        <required>false</required>
+      </property-extension>
+      <description>The number of rows to show at a time</description>
+    </property>
+    <property>
+      <property-name>showAsLinks</property-name>
+      <property-class>boolean</property-class>
+      <property-extension>
+        <collection-property>false</collection-property>
+        <designer-extension>
+          <default-value>false</default-value>
+        </designer-extension>
+        <required>false</required>
+      </property-extension>
+      <description>Enables showing each column as links</description>
+    </property>
+    <property>
+      <property-name>target</property-name>
+      <property-class>string</property-class>
+      <description>The target="" value for links</description>
+    </property>
+    <property>
+      <property-name>readOnly</property-name>
+      <property-class>boolean</property-class>
+      <property-extension>
+        <designer-extension>
+          <default-value>false</default-value>
+        </designer-extension>
+      </property-extension>
+      <description>Indicates that the links should open in read mode</description>
+    </property>
+  </composite-component>
+</faces-config>

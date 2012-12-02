@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex" xmlns:xc="http://www.ibm.com/xsp/custom">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xe="http://www.ibm.com/xsp/coreex">
 	<xp:this.dataContexts>
 		<xp:dataContext var="viewName"><xp:this.value><![CDATA[${javascript:
-			var paramCols = facesContext.getExternalContext().getRequest().getParameterMap().get("column")
+			var paramCols = compositeData.columns
 			var result = new java.util.ArrayList(paramCols.length)
 			for(var i = 0; i < paramCols.length; i++) {
 				result.add(paramCols[i])
 			}
 			
-			var databaseName = param.containsKey("databaseName") ? param.databaseName : ""
-			return frostillicus.DynaViewHelper.getView(databaseName, param.selection, result)
-			
+			var databaseName = compositeData.databaseName ? compositeData.databaseName : ""
+			return frostillicus.DynaViewHelper.getView(databaseName, compositeData.selection, result)
 		}]]></xp:this.value></xp:dataContext>
 	</xp:this.dataContexts>
+	
+	<!-- Seems like target="" doesn't work on the view panel -->
+	<xp:eventHandler event="onClientLoad" submit="false" rendered="#{compositeData.target != null}">
+		<xp:this.script><![CDATA[
+			var links = dojo.byId("#{id:viewPanel}").getElementsByTagName("a")
+			dojo.forEach(links, function(a) {
+				a.target = "#{javascript:compositeData.target}"
+			})
+		]]></xp:this.script>
+	</xp:eventHandler>
 
-	<xe:dynamicViewPanel id="viewPanel" customizerBean="frostillicus.DynamicViewCustomizer" rows="${javascript:parseInt(param.rows, 10)}" showColumnHeader="true">
+	<xe:dynamicViewPanel id="viewPanel" rows="${javascript:parseInt(param.rows, 10)}" showColumnHeader="true" target="${param.target}">
 		<xe:this.data>
-			<xp:dominoView var="view1" viewName="#{viewName}" databaseName="${param.databaseName}" />
+			<xp:dominoView var="view1" viewName="#{viewName}" databaseName="#{compositeData.databaseName}" />
 		</xe:this.data>
 		<xp:this.facets>
 			<xp:pager partialRefresh="true" layout="Previous Group Next" xp:key="headerPager" id="pager1" pageCount="4"
