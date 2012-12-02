@@ -8,7 +8,8 @@
 		- rows: the number of rows to show at a time
 	-->
 
-	<xe:dynamicViewPanel id="viewPanel" customizerBean="frostillicus.DynamicViewCustomizer" rows="${javascript:parseInt(param.rows, 10)}" showColumnHeader="true">
+	<xe:dynamicViewPanel id="viewPanel" customizerBean="frostillicus.DynamicViewCustomizer" rows="${javascript:parseInt(param.rows, 10)}" showColumnHeader="true"
+		target="${param.target}">
 		<xe:this.data>
 			<xp:dominoView var="view1" viewName="${param.viewName}" databaseName="${param.databaseName}" />
 		</xe:this.data>

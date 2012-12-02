@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE note SYSTEM 'xmlschemas/domino_8_5_3.dtd'>
+<note class='view' xmlns='http://www.lotus.com/dxl' version='8.5' maintenanceversion='3.0'
+ replicaid='85257AC30078790D'>
+<noteinfo noteid='26e' unid='FBDAAE117C46B59185257AC30080C941' sequence='17'>
+<created><datetime>20121127T182641,29-05</datetime></created>
+<modified><datetime>20121127T182641,78-05</datetime></modified>
+<revised><datetime>20121127T182641,77-05</datetime></revised>
+<lastaccessed><datetime>20121127T182641,77-05</datetime></lastaccessed>
+<addedtofile><datetime>20121127T182641,30-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Arcturus/O=Frost</name><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
+<item name='$FormulaClass' sign='true'><text>1</text></item>
+<item name='$TITLE' sign='true'><text>($$DynaView-1ddf375106521e109166dbbfefc2f65e)</text></item>
+<item name='$Index' sign='true'><text/></item>
+<item name='$Formula' summary='true' sign='true'><formula compiled='true'>
+WAAFACoAJgAEAAQACQAJAAQATmFtZVJlYWxtTmFtZSRDb25mbGljdCRSRUYEAAQAAAAcAAUABABO
+YW1lAQAIAEVsZWdhYmFsCgIDAAcADAAFAAkwUzBFAA==
+</formula></item>
+<item name='$Collation' summary='true'>
+<rawitemdata type='2'>
+FgABAABEAGYAAAAJAFJlYWxtTmFtZQ==
+</rawitemdata></item>
+<item name='$Collation1' summary='true'>
+<rawitemdata type='2'>
+FgABAABEAWYAAAAJAFJlYWxtTmFtZQ==
+</rawitemdata></item>
+<item name='$ViewFormat' summary='true' sign='true'>
+<rawitemdata type='5'>
+AQACAAEACAAQAFZDAAAEAAQAAAAAAFAAAQAACgAAAAAAAAAAAAICAAAAVkMBAgkABQAAAAAAUAAB
+AAAKAAAAAAAAAAAAAgIAAABOYW1lTmFtZVJlYWxtTmFtZVJlYWxtJgABAAAAAQEACQEAAAoBAQ4K
+AAABAK0rAQABAAEAAAAAAAAAAABXQwEBAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAA
+AAAAAAAAAAAAV0MBAQAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAEIA
+AAAAAAEA////AAUA////AAEAAAAAAAAAAAAAAAAAAQD///8AAQD///8AAAABAAAAAAABAAAAAAAB
+AAAAAAAAAAgAAAAAAAEA
+</rawitemdata></item>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$Flags'><text>PY</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item></note>
+

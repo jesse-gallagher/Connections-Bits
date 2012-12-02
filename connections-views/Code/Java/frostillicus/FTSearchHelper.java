@@ -8,11 +8,13 @@ import java.util.*;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.el.ValueBinding;
 
 public class FTSearchHelper {
 	private FTSearchHelper() { }
 
-	public static void addColumns(XspViewPanel panel, List<String> columns) {
+	public static void addColumns(XspViewPanel panel, List<String> columns, boolean links, String databaseName, boolean readOnly) {
+
 		ControlImpl<XspViewPanel> viewControl = new ControlImpl<XspViewPanel>(panel);
 		for(String columnInfo : columns) {
 			String columnName, columnHeader;
@@ -29,6 +31,16 @@ public class FTSearchHelper {
 			XspViewColumn column = new XspViewColumn();
 			column.setColumnName(columnName);
 			column.setId("col" + columnName);
+			if(links) {
+				column.setDisplayAs("link");
+				ValueBinding pageUrl = FacesContext.getCurrentInstance().getApplication().createValueBinding(
+						"$$OpenDominoDocument.xsp?" +
+						"documentId=#{" + panel.getVar() + ".documentId}" +
+						(databaseName == null ? "" : "&databaseName=" + databaseName) +
+						"&action=" + (readOnly ? "openDocument" : "editDocument")
+				);
+				column.setValueBinding("pageUrl", pageUrl);
+			}
 			ControlImpl<UIComponent> cCol = new ControlImpl<UIComponent>(column);
 
 			// Create the header

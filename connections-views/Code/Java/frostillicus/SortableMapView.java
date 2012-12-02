@@ -74,6 +74,7 @@ public class SortableMapView extends TabularDataModel implements Serializable, T
 					item.recycle();
 				}
 			}
+			result.put("documentId", doc.getUniversalID());
 			this.add(result);
 
 			Document tempDoc = doc;
