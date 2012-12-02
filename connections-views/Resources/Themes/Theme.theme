@@ -17,9 +17,5 @@
 			<name>pageIcon</name>
 			<value>/$Icon</value>
 		</property>
-		<property>
-			<name>pageTitle</name>
-			<value>#{database.title}</value>
-		</property>
 	</control>
 </theme>
