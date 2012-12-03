@@ -12,6 +12,11 @@
 		- showAsLinks: "true" enables showing each column as links
 		- target: the target="" value for links
 		- readOnly: "true" indicates that the links should open in read mode
+		
+		Connections Params:
+		
+		- uniqueId: a unique ID for communicating with the iWidget container (presence indicates widget mode)
+		- fullPage: the presence of a value for this indicates that the widget is in full page mode (optional)
 	-->
 
 	<xc:FTSearch
@@ -25,4 +30,6 @@
 		target="${param.target}"
 		readOnly="${param.readOnly == 'true'}"
 	/>
+	
+	<xc:GenericXPagesWidget isFullPageModeMode="${param.fullPage == null ? false : true}" uniqueId="${param.uniqueId}" loaded="${param.uniqueId != null}"/>
 </xp:view>

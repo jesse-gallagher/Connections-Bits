@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="3.0" replicaid="00257A77006460AB" version="8.5" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="1a6" sequence="3" unid="C0E05032BD04A73500257A77006DC81E">
-<created><datetime>20120912T195906,54+00</datetime></created>
-<modified><datetime>20120912T232454,29+00</datetime></modified>
-<revised><datetime>20120912T232454,28+00</datetime></revised>
-<lastaccessed><datetime>20120912T232454,29+00</datetime></lastaccessed>
-<addedtofile><datetime>20120912T195906,67+00</datetime></addedtofile></noteinfo>
-<updatedby><name>CN=Jesse Gallagher/O=MTC</name><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
+<?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="3.0" replicaid="85257AC30078790D" version="8.5" xmlns="http://www.lotus.com/dxl">
+<noteinfo noteid="17a" sequence="4" unid="53DF76C6A370CCFD85257AC300787D6F">
+<created><datetime>20121127T165604,31-05</datetime></created>
+<modified><datetime>20121203T164947,88-05</datetime></modified>
+<revised><datetime>20121203T164947,86-05</datetime></revised>
+<lastaccessed><datetime>20121203T164947,86-05</datetime></lastaccessed>
+<addedtofile><datetime>20121127T165604,40-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
 <wassignedby><name>CN=Jesse Gallagher/O=Frost</name></wassignedby>
 <item name="$TITLE"><text>notesView.css</text></item>
 <item name="$MimeType"><text>text/css</text></item>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE note SYSTEM 'xmlschemas/domino_8_5_3.dtd'>
+<note class='view' xmlns='http://www.lotus.com/dxl' version='8.5' maintenanceversion='3.0'
+ replicaid='85257AC30078790D'>
+<noteinfo noteid='2ee' unid='8483188FFEC5881585257AC900781D35' sequence='3'>
+<created><datetime>20121203T165157,97-05</datetime></created>
+<modified><datetime>20121203T165230,87-05</datetime></modified>
+<revised><datetime>20121203T165230,86-05</datetime></revised>
+<lastaccessed><datetime>20121203T165230,86-05</datetime></lastaccessed>
+<addedtofile><datetime>20121203T165158,04-05</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
+<wassignedby><name>CN=Jesse Gallagher/O=Frost</name></wassignedby>
+<item name='$FormulaClass' sign='true'><text>1</text></item>
+<item name='$TITLE' sign='true'><text>TestView</text></item>
+<item name='$Index' sign='true'><text/></item>
+<item name='$Formula' summary='true' sign='true'><formula compiled='true'>
+dgACAB4AAgAkMAUABABOYW1lAAAAAAAAAADwP18CAwAFACoAJgAFAAIABAAFAAkABAAkME5hbWVD
+bGFzcyRDb25mbGljdCRSRUYEAAQAAAAeAAUABABGb3JtAQAJAENoYXJhY3RlcgAKAgMABwAKAAQA
+CUwxUw==
+</formula></item>
+<item name='$Collation' summary='true'>
+<rawitemdata type='2'>
+DwABAABECGYHAAACACQw
+</rawitemdata></item>
+<item name='$ViewFormat' summary='true' sign='true'>
+<rawitemdata type='5'>
+AQADAAMACAAAAFZDgwQCAAAAKgAAAAgAAQEACgABAAAAAAAAAAICAAAAVkMAAAQABAAAAAAAUAAB
+AAAKAAAAAAAAAAAAAgIAAABWQwAABQAFAAAAAABQAAEAAAoAAAAAAAAAAAACAgAAACQwKgACAB4A
+AgAkMAUABABOYW1lAAAAAAAAAADwP18CAwAHAAoAAwAJNFMATmFtZU5hbWVDbGFzc0NsYXNzJgAB
+AAAAAQEACQEAAAoBAQ4KAAABAK0rAQABAAEAAAAAAAAAAABXQwEBAAkAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAV0MBAQAJAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAA//8A
+AAAAAAAAAAAAAAAAAFdDAQEACQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAP//AAAAAAAAAAAAAAAA
+AABCAAAAAAABAP///wAFAP///wABAAAAAAAAAAAAAAAAAAEA////AAEA////AAAAAQAAAAAAAQAA
+AAAAAQAAAAAAAAAIAAAAAAABAA==
+</rawitemdata></item>
+<item name='$Comment' sign='true'><text/></item>
+<item name='$Flags'><text>PY</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item></note>
+

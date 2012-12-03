@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+	<xp:scriptBlock type="text/javascript">
+		<xp:this.value>
+			<![CDATA[	
+			
+var message = "#{javascript:
+			
+var message = null;	
+if ((compositeData.uniqueId) && (!compositeData.uniqueId.equalsIgnoreCase(''))) {
+	message = compositeData.uniqueId + '#';
+	if (compositeData.isFullPageModeMode) {
+		message = message + 'fullPage#';
+	} else {
+		message = message + 'view#';
+	}
+}}";
+
+window.onload = function () {
+	if (message) {
+		parent.postMessage(message + document.body.scrollHeight + 'px', '*');
+	}
+};			
+window.onresize = function(){
+	if (message) {
+		parent.postMessage(message + document.body.scrollHeight + 'px', '*');
+	}
+};
+
+			]]>
+		</xp:this.value>
+	</xp:scriptBlock>
+
+</xp:view>

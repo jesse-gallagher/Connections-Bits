@@ -3,10 +3,9 @@
 	overflow: hidden;
 }
 
-/* Make Notes views full width and let the last column extend to the end */
-.notesView .xspDataTableViewPanel { width: 100% }
-/*.notesView .xspDataTableViewPanel td:last-child, .notesView .xspDataTableViewPanel th:last-child { width: 100% }*/
-.notesView .xspDataTable { margin-left: 0 !important }
+/* Make Notes views full width */
+.notesView { width: 100% }
+.notesView .xspDataTable { width: 100%; margin-left: 0 !important }
 .notesView td.notesViewColumn:first-child { padding-left: 5px !important }
 
 .notesView span.xspPanelViewColumnHeader, .notesView th {

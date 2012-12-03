@@ -6,6 +6,11 @@
 		- databaseName: the database name (or "server!!database") of the view (optional)
 		- viewName: the name of the view in the database
 		- rows: the number of rows to show at a time
+		
+		Connections Params:
+		
+		- uniqueId: a unique ID for communicating with the iWidget container (presence indicates widget mode)
+		- fullPage: the presence of a value for this indicates that the widget is in full page mode (optional)
 	-->
 
 	<xe:dynamicViewPanel id="viewPanel" customizerBean="frostillicus.DynamicViewCustomizer" rows="${javascript:parseInt(param.rows, 10)}" showColumnHeader="true"
@@ -31,4 +36,6 @@
 			classes.join(" ")
 		}]]></xp:this.viewStyleClass>
 	</xe:dynamicViewPanel>
+	
+	<xc:GenericXPagesWidget isFullPageModeMode="${param.fullPage == null ? false : true}" uniqueId="${param.uniqueId}" loaded="${param.uniqueId != null}"/>
 </xp:view>
