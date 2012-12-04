@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="3.0" replicaid="85257AC30078790D" version="8.5" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="2c6" sequence="3" unid="A1147D8F0751AF5785257AC900767D15">
+<noteinfo noteid="2c6" sequence="6" unid="A1147D8F0751AF5785257AC900767D15">
 <created><datetime>20121203T163412,69-05</datetime></created>
-<modified><datetime>20121203T163412,93-05</datetime></modified>
-<revised><datetime>20121203T163412,92-05</datetime></revised>
-<lastaccessed><datetime>20121203T163412,92-05</datetime></lastaccessed>
+<modified><datetime>20121204T102149,43-05</datetime></modified>
+<revised><datetime>20121204T102149,41-05</datetime></revised>
+<lastaccessed><datetime>20121204T102149,41-05</datetime></lastaccessed>
 <addedtofile><datetime>20121203T163412,73-05</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Jesse Gallagher/O=Frost</name></updatedby>
 <wassignedby><name>CN=Jesse Gallagher/O=Frost</name></wassignedby>
@@ -11,6 +11,12 @@
 <item name="$TITLE"><text>GenericXPagesWidget.xsp</text></item>
 
 
-<item name="$FileNames" sign="true"><text>GenericXPagesWidget.xsp</text></item>
+<item name="$DesignerVersion"><text>8.5</text></item>
 
-</note>
+
+
+
+
+
+
+<item name="$FileNames" sign="true"><text>GenericXPagesWidget.xsp</text></item></note>

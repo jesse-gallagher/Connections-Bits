@@ -1,3 +1,5 @@
+html, body, form { height: auto }
+
 .viewTable td, .viewTable tr {
 	max-height: 100px;
 	overflow: hidden;
